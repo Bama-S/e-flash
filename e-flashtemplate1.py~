@@ -97,7 +97,7 @@ class eflashframe(wx.Frame):
             self.loadimg()
 ###############################################################################
     def loadimg(self):
-        print self.listimg
+        #print self.listimg
         self.pictureCount = len(self.listimg)
         self.displayImage(self.listimg[0])
 ###############################################################################
