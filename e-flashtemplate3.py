@@ -7,6 +7,8 @@ import os
 import wx.lib.agw.gradientbutton
 import wx.lib.colourdb
 import pyglet
+import random
+import dircache
 
 class eflashframe(wx.Frame):
     def __init__(self,parent,id,title):

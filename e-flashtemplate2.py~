@@ -19,7 +19,7 @@ class eflashframe(wx.Frame):
         #self.pictureCount = 0 
         self.pictureIndex = 0
         self.mainSizer = wx.BoxSizer(wx.VERTICAL)
-        self.PhotoMaxSize = 1000
+        self.PhotoMaxSize = 800
         ############################################################################################
         #Create tool bar for Open directory alone. All the images are to be stored in this directory
         ############################################################################################

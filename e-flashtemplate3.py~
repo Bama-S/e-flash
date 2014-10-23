@@ -7,6 +7,8 @@ import os
 import wx.lib.agw.gradientbutton
 import wx.lib.colourdb
 import pyglet
+import random
+import dircache
 
 class eflashframe(wx.Frame):
     def __init__(self,parent,id,title):
@@ -37,7 +39,8 @@ class eflashframe(wx.Frame):
                 self.listimg.append(os.path.join(root,animal))   
         self.soundlist = []
         for name in sound:
-            filename,extension = os.path.splitext(name)
+            fname = random.choice(os.listdir('animals'))
+            filename,extension = os.path.splitext(fname)
             self.soundlist.append(filename)   
         self.width, self.height = wx.DisplaySize()     
         starterImage = wx.EmptyImage(self.width,self.height)
