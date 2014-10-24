@@ -52,19 +52,21 @@ class eflashframe(wx.Frame):
         self.panel.Bind(wx.EVT_LEFT_UP,self.onClick)
         
         self.mainSizer.Add(self.imageHolder, 1, wx.CENTER, 5)
-        font = wx.Font(28, wx.DECORATIVE, wx.BOLD, wx.NORMAL)
+        font = wx.Font(28, wx.FONTFAMILY_DEFAULT, wx.FONTWEIGHT_NORMAL, wx.FONTSTYLE_NORMAL)
+        
         #################################################################################
         #Only two buttons, NEXT and EXIT are used. After checking with Vidyasagar, we may 
         #have to include PREVIOUS button also.
         ##################################################################################
         self.nxtbtn = wx.ToggleButton(self.panel,1, 'NEXT', (50,self.height - 200),(110,80)) 
         self.nxtbtn.SetFont(font)
-        self.nxtbtn.SetBackgroundColour(wx.RED)
-        self.nxtbtn.SetForegroundColour(wx.BLACK)
+        self.nxtbtn.SetBackgroundColour("blue")
+        #self.nxtbtn.SetForegroundColour(wx.Colour(255,255,255))
+        self.nxtbtn.SetForegroundColour("blue")
         self.xitbtn = wx.ToggleButton(self.panel,2,'EXIT',(self.width - 150,self.height-200),(110,80))
         self.xitbtn.SetFont(font)
-        self.xitbtn.SetBackgroundColour(wx.RED)
-        self.xitbtn.SetForegroundColour(wx.BLACK)
+        self.xitbtn.SetBackgroundColour(wx.Colour(255,0,0))
+        self.xitbtn.SetForegroundColour(wx.Colour(255,255,255))
         
         self.Bind(wx.EVT_TOGGLEBUTTON, self.onNext, id=1)
         self.Bind(wx.EVT_TOGGLEBUTTON, self.onClose, id=2)
@@ -85,16 +87,19 @@ class eflashframe(wx.Frame):
             self.nxtbtn.Show()
             self.xitbtn.SetValue(False)
             self.xitbtn.Hide()
-            self.nxtbtn.SetBackgroundColour(wx.GREEN)
+            self.nxtbtn.SetBackgroundColour('blue')
+            self.nxtbtn.SetForegroundColour(wx.Colour(255,255,255))
+            self.nxtbtn.SetForegroundColour('blue')
             self.nxtbtn.SetLabel("NEXT")
-            self.xitbtn.SetBackgroundColour(wx.RED)
+            self.xitbtn.SetForegroundColour(wx.Colour(255,255,255))
             
         elif nxt == True:
             self.nxtbtn.SetValue(False)  
             self.nxtbtn.Hide()                
             self.xitbtn.SetValue(True)
             self.xitbtn.Show()
-            self.nxtbtn.SetBackgroundColour(wx.RED)       
+            self.nxtbtn.SetBackgroundColour("blue")
+            self.nxtbtn.SetForegroundColour("YELLOW")
             self.xitbtn.SetBackgroundColour(wx.GREEN)
         #print 'nxt',nxt
         wx.CallLater(3000,self.update)#3000-3 seconds.       
