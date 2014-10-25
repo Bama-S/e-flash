@@ -7,6 +7,8 @@ import os
 import wx.lib.agw.gradientbutton
 import wx.lib.colourdb
 import pyglet
+from wx.lib.wordwrap import wordwrap
+
 class MySplashScreen(wx.SplashScreen):
     """
 Create a splash screen widget.
@@ -51,9 +53,9 @@ class eflashframe(wx.Frame):
         ############################################################################################
         self.toolbar = self.CreateToolBar()
         #self.toolbar.SetToolBitmapSize((16,16))              
-        #open_ico = wx.ArtProvider.GetBitmap(wx.ART_FILE_OPEN, wx.ART_TOOLBAR, (16,16))
-        #openTool = self.toolbar.AddSimpleTool(wx.ID_ANY, open_ico, "Open", "Open an Image Folder")
-        #self.Bind(wx.EVT_MENU, self.onOpenDirectory, openTool)
+        about_ico = wx.ArtProvider.GetBitmap(wx.ART_INFORMATION, wx.ART_TOOLBAR, (16,16))
+        aboutTool = self.toolbar.AddSimpleTool(wx.ID_ANY, about_ico, "About", "About E-flash card")
+        self.Bind(wx.EVT_MENU, self.onAbout, aboutTool)
         self.toolbar.Realize()
         self.listimg = []
         animals = os.listdir('animals')
@@ -96,6 +98,29 @@ class eflashframe(wx.Frame):
         self.SetSizer(self.mainSizer)   
         self.loadimg()
         self.bupdate() 
+        #################################################################################
+    def onAbout(self, event):
+        info = wx.AboutDialogInfo()
+        info.Name = "E-Flash card"
+        info.Version = "0.0.1 Beta"
+        info.Copyright = "(C) Department of IST, Anna University"
+        info.Description = wordwrap(
+        "This is an application for differently abled children and can be accessed through "
+        "switch access scanning",
+        350, wx.ClientDC(self.panel))
+        #info.WebSite = ("http://www.pythonlibrary.org", "My Home Page")
+        info.Developers = ["Bama Srinivasan", "Ranjani Parthasarathi","Voice: A.S Narayanan","Images from: http://animalphotos.info/a/","Peacock image: Thimindu Goonatillake from Colombo, Sri Lanka"]
+        
+        info.License = wordwrap("This program is free software: you can redistribute it and/or modify "
+        "it under the terms of the GNU General Public License as published by "
+        "the Free Software Foundation, either version 3 of the License, or "
+        "(at your option) any later version. This program is distributed in the hope that it will be useful, "
+        "but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A "
+        "PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received "
+         "a copy of the GNU General Public License along with this program. If not, see "
+        "<http://www.gnu.org/licenses/>.",500, wx.ClientDC(self.panel))
+        # Show the wx.AboutBox
+        wx.AboutBox(info)
         
 ###############################################################       
       
