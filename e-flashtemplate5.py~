@@ -102,7 +102,7 @@ class eflashframe(wx.Frame):
     def onAbout(self, event):
         info = wx.AboutDialogInfo()
         info.Name = "E-Flash card"
-        info.Version = "0.0.1 Beta"
+        info.Version = "1.0.0 Beta"
         info.Copyright = "(C) Department of IST, Anna University"
         info.Description = wordwrap(
         "This is an application for differently abled children and can be accessed through "
